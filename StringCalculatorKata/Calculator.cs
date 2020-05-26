@@ -12,7 +12,8 @@ namespace StringCalculatorKata
             {
                 return 0;
             }
-            var numbers = incomingString.Split(",");
+            // var numbers = incomingString.Split(",");
+            var numbers = incomingString.Split(',', '\n');
             return numbers.Sum(number => int.Parse(number));
             
         }
