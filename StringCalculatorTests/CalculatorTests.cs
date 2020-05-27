@@ -56,6 +56,22 @@ namespace StringCalculatorTests
             var result = _calculator.Add(incomingString);
             Assert.Equal(expectedOutcome,result);
         }
+        
+        [Fact]
+        public void TakeStringWithNewDelimiterAndReturnInt()
+        {
+            var result = _calculator.Add("//;\n1;2");
+            Assert.Equal(3, result);
+        } 
+        
+       
+        [Fact]
+        public void TakeStringWithNegativeNumberAndThrowError()
+        {
+            var ex = Assert.Throws<Exception>(() => _calculator.Add("-1,2,-3"));
+            Assert.Equal("Negatives not allowed: -1, -3",ex.Message);
+        } 
+        
     }
 }
 
