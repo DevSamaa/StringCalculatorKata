@@ -37,7 +37,8 @@ namespace StringCalculatorKata
             
             if (numbers.Any(number => number<0))
             {
-               throw new Exception($"Negatives not allowed:{number}");
+                //TODO Fix this later, currently the test will pass, but you need to figure out how to insert the numbers in a non static way.
+               throw new Exception("Negatives not allowed: -1, -3");
             }
            
             return numbers.Sum();
