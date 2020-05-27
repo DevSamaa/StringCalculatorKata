@@ -28,7 +28,6 @@ namespace StringCalculatorKata
             
             delimiter = new[] {',' , '\n'};
             return  SplitAndSum(delimiter, incomingString);
-            
         }
 
         private int SplitAndSum(char[] delimiter, string incomingString)
