@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace StringCalculatorKata
@@ -14,27 +15,34 @@ namespace StringCalculatorKata
             }
 
             var startsWithSlash = incomingString.StartsWith("//");
+            char[] delimiter;
             if (startsWithSlash)
             {
                 // take the delimiter after the // and store it in a var
-                var newDelimiter = incomingString[2];
+                delimiter = new[] {incomingString[2]};
                
                 //create a substring of everything after the (first) /n
                 var newString = incomingString.Substring(incomingString.IndexOf('\n')+1);
-                var numbers = newString.Split(newDelimiter);
-                
-                //TODO change this, it's currently not DRY
-                return numbers.Sum(number => int.Parse(number));
-
-            }
+                return SplitAndSum(delimiter, newString);
+            } 
             
-            var numbers2 = incomingString.Split(',', '\n');
-           
-            //figure out if any number is smaller than 0, if so throw error with message that contains the numbers
-            return numbers2.Sum(number => int.Parse(number));
+            delimiter = new[] {',' , '\n'};
+            return  SplitAndSum(delimiter, incomingString);
             
         }
-        
+
+        private int SplitAndSum(char[] delimiter, string incomingString)
+        {
+            var splitItems = incomingString.Split(delimiter).ToList();
+            var numbers = splitItems.Select(int.Parse);
+            
+            if (numbers.Any(number => number<0))
+            {
+               throw new Exception($"Negatives not allowed:{number}");
+            }
+           
+            return numbers.Sum();
+        }
     }
 }
 
