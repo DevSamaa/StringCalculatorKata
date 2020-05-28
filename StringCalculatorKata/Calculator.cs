@@ -16,29 +16,34 @@ namespace StringCalculatorKata
 
             var startsWithSlash = incomingString.StartsWith("//");
             char[] delimiter;
+            string numberString;
+            
             if (startsWithSlash)
             {
                 // take the delimiter after the // and store it in a var
                 delimiter = new[] {incomingString[2]};
                
                 //create a substring of everything after the (first) /n
-                var newString = incomingString.Substring(incomingString.IndexOf('\n')+1);
-                return SplitAndSum(delimiter, newString);
-            } 
-            
-            delimiter = new[] {',' , '\n'};
-            return  SplitAndSum(delimiter, incomingString);
+                numberString = incomingString.Substring(incomingString.IndexOf('\n')+1);
+            }
+            else
+            {
+                delimiter = new[] {',' , '\n'};
+                numberString = incomingString;
+            }
+            return  SplitAndSum(delimiter, numberString);
         }
 
         private int SplitAndSum(char[] delimiter, string incomingString)
         {
             var splitItems = incomingString.Split(delimiter).ToList();
-            var numbers = splitItems.Select(int.Parse);
+            var numbers = splitItems.Select(int.Parse).ToList();
             
-            if (numbers.Any(number => number<0))
+            var negativeNumbers = numbers.Where(number => number < 0).ToList();
+            if (negativeNumbers.Any())
             {
-                //TODO Fix this later, currently the test will pass, but you need to figure out how to insert the numbers in a non static way.
-               throw new Exception("Negatives not allowed: -1, -3");
+                var joinedNumbers = string.Join(", ", negativeNumbers);
+                throw new Exception($"Negatives not allowed: {joinedNumbers}");
             }
            
             return numbers.Sum();
@@ -46,4 +51,4 @@ namespace StringCalculatorKata
     }
 }
 
-
+//Maybe we should do a little bit more teaching. Maybe walk Samaa through some of the methods (String Methods) relevant for the next step.
