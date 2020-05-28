@@ -82,6 +82,14 @@ namespace StringCalculatorTests
             var result = _calculator.Add(incomingString);
             Assert.Equal(expectedOutcome,result);
         }
+        
+        [Theory]
+        [InlineData("//[***]\n1***2***3",6)]
+        public void TakeMultiCharacterDelimiters(string incomingString, int expectedOutcome)
+        {
+            var result = _calculator.Add(incomingString);
+            Assert.Equal(expectedOutcome,result);
+        }
     }
 }
 
