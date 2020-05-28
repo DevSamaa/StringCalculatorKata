@@ -45,8 +45,9 @@ namespace StringCalculatorKata
                 var joinedNumbers = string.Join(", ", negativeNumbers);
                 throw new Exception($"Negatives not allowed: {joinedNumbers}");
             }
-           
-            return numbers.Sum();
+
+            var numbersSmallerThan1000 = numbers.Where(number => number < 1000);
+            return numbersSmallerThan1000.Sum();
         }
     }
 }

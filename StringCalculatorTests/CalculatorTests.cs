@@ -72,6 +72,16 @@ namespace StringCalculatorTests
             Assert.Equal("Negatives not allowed: -1, -3",ex.Message);
         } 
         
+        
+         
+        [Theory]
+        [InlineData("1000,1001,2",2)]
+        [InlineData("1000,999,2",1001)]
+        public void IgnoreNumbersBiggerThan999(string incomingString, int expectedOutcome)
+        {
+            var result = _calculator.Add(incomingString);
+            Assert.Equal(expectedOutcome,result);
+        }
     }
 }
 
