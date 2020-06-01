@@ -4,6 +4,11 @@
     &lt;TestId&gt;xUnit::06C7AD79-32D7-448A-8D91-EF01724D1B02::.NETCoreApp,Version=v3.1::StringCalculatorTests.CalculatorShould&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=59ca9dc2_002Dd439_002D44a8_002Da9b7_002D1d8981f0f8a5/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="False" ContinuousTestingMode="0" FrameworkVersion="{x:Null}" IsLocked="False" Name="TakeMultiCharacterDelimiters" PlatformMonoPreference="{x:Null}" PlatformType="{x:Null}" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::06C7AD79-32D7-448A-8D91-EF01724D1B02::.NETCoreApp,Version=v3.1::StringCalculatorTests.CalculatorShould.TakeMultiCharacterDelimiters&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5bb98bfc_002D22cf_002D4286_002Da0fa_002D370b98a04a5e/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="False" ContinuousTestingMode="0" FrameworkVersion="{x:Null}" IsLocked="False" Name="CalculatorShould #2" PlatformMonoPreference="{x:Null}" PlatformType="{x:Null}" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::06C7AD79-32D7-448A-8D91-EF01724D1B02::.NETCoreApp,Version=v3.1::StringCalculatorTests.CalculatorShould&lt;/TestId&gt;
@@ -11,7 +16,7 @@
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7953689c_002Da6d5_002D41d6_002Da22f_002D860f692bde1f/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="False" ContinuousTestingMode="0" FrameworkVersion="{x:Null}" IsLocked="False" Name="TakeStringWithNegativeNumberAndThrowError" PlatformMonoPreference="{x:Null}" PlatformType="{x:Null}" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::06C7AD79-32D7-448A-8D91-EF01724D1B02::.NETCoreApp,Version=v3.1::StringCalculatorTests.CalculatorShould.TakeStringWithNegativeNumberAndThrowError&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::06C7AD79-32D7-448A-8D91-EF01724D1B02::.NETCoreApp,Version=v3.1::StringCalculatorTests.CalculatorShould&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f1154a17_002D292e_002D40bc_002Db75a_002D1c4775ced9ac/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="False" ContinuousTestingMode="0" FrameworkVersion="{x:Null}" IsLocked="False" Name="CalculatorShould" PlatformMonoPreference="{x:Null}" PlatformType="{x:Null}" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&gt;

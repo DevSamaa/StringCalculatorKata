@@ -13,6 +13,7 @@ namespace StringCalculatorTests
             _calculator = new Calculator();
         }
         
+        //Step 1
         [Fact]
         public void TakeEmptyStringAndReturnInt()
         {
@@ -20,6 +21,7 @@ namespace StringCalculatorTests
             Assert.Equal(0, result);
         }
         
+        //Step 2
         [Theory]
         [InlineData("1",1)]
         [InlineData("3",3)]
@@ -28,7 +30,8 @@ namespace StringCalculatorTests
             var result = _calculator.Add(incomingString);
             Assert.Equal(expectedOutcome,result);
         }
-
+        
+        // Step 3
         [Theory]
         [InlineData("1,2",3)]
         [InlineData("3,5",8)]
@@ -38,6 +41,7 @@ namespace StringCalculatorTests
             Assert.Equal(expectedOutcome,result);
         }
         
+        //Step 4
         [Theory]
         [InlineData("1,2,3",6)]
         [InlineData("3,5,3,9",20)]
@@ -47,7 +51,7 @@ namespace StringCalculatorTests
             Assert.Equal(expectedOutcome,result);
         }
         
-       
+        // Step 5
         [Theory]
         [InlineData("1,2\n3",6)]
         [InlineData("3\n5\n3,9",20)]
@@ -57,6 +61,7 @@ namespace StringCalculatorTests
             Assert.Equal(expectedOutcome,result);
         }
         
+        // Step 6
         [Fact]
         public void TakeStringWithNewDelimiterAndReturnInt()
         {
@@ -64,7 +69,7 @@ namespace StringCalculatorTests
             Assert.Equal(3, result);
         } 
         
-       
+        // Step 7
         [Fact]
         public void TakeStringWithNegativeNumberAndThrowError()
         {
@@ -73,7 +78,7 @@ namespace StringCalculatorTests
         } 
         
         
-         
+        // Step 8
         [Theory]
         [InlineData("1000,1001,2",2)]
         [InlineData("1000,999,2",1001)]
@@ -83,12 +88,44 @@ namespace StringCalculatorTests
             Assert.Equal(expectedOutcome,result);
         }
         
+        //Step 9
         [Theory]
         [InlineData("//[***]\n1***2***3",6)]
+        [InlineData("//[*****]\n1*****2*****3",6)]
         public void TakeMultiCharacterDelimiters(string incomingString, int expectedOutcome)
         {
             var result = _calculator.Add(incomingString);
             Assert.Equal(expectedOutcome,result);
+        }
+        
+        //Step 10
+        [Theory]
+        [InlineData("//[*][%]\n1*2%3", 6)]
+        [InlineData("//[*][%][!]\n1*2%3!4",10)]
+        public void TakeMultipleDelimiters(string incomingString, int expectedOutcome)
+        {
+            var result = _calculator.Add(incomingString);
+            Assert.Equal(expectedOutcome, result);
+        }
+        
+        //Step 11
+        [Theory]
+        [InlineData("//[***][#][%]\n1***2#3%4", 10)]
+        public void TakeMultipleDelimitersWithDifferntLenghts(string incomingString, int expectedOutcome)
+        {
+            var result = _calculator.Add(incomingString);
+            Assert.Equal(expectedOutcome, result);
+        }
+        
+        //Step 12
+        [Theory]
+        [InlineData("//[*1*][%]\n1*1*2%3",6)]
+        [InlineData("//[*5**][%]\n1*5**2%3",6)]
+        [InlineData("//[!9!!][*5**]\n1!9!!2*5**3",6)]
+        public void TakeMultipleDelimitersWithNumbers(string incomingString, int expectedOutcome)
+        {
+            var result = _calculator.Add(incomingString);
+            Assert.Equal(expectedOutcome, result);
         }
     }
 }

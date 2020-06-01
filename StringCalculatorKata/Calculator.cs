@@ -7,39 +7,55 @@ namespace StringCalculatorKata
     public class Calculator
     {
 
-        public int Add(string incomingString)
+        public int Add(string input)
         {
-            if (string.IsNullOrEmpty(incomingString))
+            if (string.IsNullOrEmpty(input))
             {
                 return 0;
             }
 
-            var startsWithSlash = incomingString.StartsWith("//");
+            var startsWithSlash = input.StartsWith("//");
             string[] delimiter;
             string numberString;
-            
             if (startsWithSlash)
             {
-                var startOfDelimiter = incomingString.IndexOf('/')+2; //2
-                var endOfDelimiter = incomingString.IndexOf('\n'); //7
+                var startOfDelimiter = input.IndexOf('/')+2; //2
+                var endOfDelimiter = input.IndexOf('\n'); //7
                 var lengthOfDelimiter = endOfDelimiter - startOfDelimiter; //5
                 
+                // delimiter is more than one character
                 if (lengthOfDelimiter >1)
                 {
-                    delimiter =  new []{incomingString.Substring(startOfDelimiter+1, lengthOfDelimiter-2)};
+                    var countOfBracket = input.Count(character => character == '[');
+                    var insideBrackets = input.Substring(startOfDelimiter + 1, lengthOfDelimiter - 2);
+                    // insideBrackets turns this: "//[***]\n1***2***3"   into "//[***]\n1"
+                    if (countOfBracket == 1)
+                    {
+                        //  example:    "//[***]\n1***2***3"        delimiter: ***
+                        delimiter =  new []{insideBrackets};
+                    }
+                    else
+                    {
+                        //  example:    "//[*][%]\n1*2%3"        delimiters: * , %
+                        var listOfTempDelimiters = new[] {"[", "]"};
+                        delimiter =insideBrackets.Split(listOfTempDelimiters, StringSplitOptions.RemoveEmptyEntries);
+                    }
                 }
+                //it only goes here if the delimiter is 1 character
                 else
                 {
-                    delimiter =  new []{incomingString.Substring(startOfDelimiter, lengthOfDelimiter)};
- 
+                    //example:       "//;\n1;2"           delimiter = ;
+                    delimiter =  new []{input.Substring(startOfDelimiter, lengthOfDelimiter)};
                 }
                 
-                numberString = incomingString.Substring(incomingString.IndexOf('\n')+1);
+                numberString = input.Substring(input.IndexOf('\n')+1);
             }
+            
+            // if the incoming string doesn't start with slash
             else
             {
                 delimiter = new[] {"," , "\n"};
-                numberString = incomingString;
+                numberString = input;
             }
             return  SplitAndSum(delimiter, numberString);
         }
@@ -62,11 +78,4 @@ namespace StringCalculatorKata
     }
 }
 
-//Maybe we should do a little bit more teaching. Maybe walk Samaa through some of the methods (String Methods) relevant for the next step.
-// delimiter starts at index[2], \n starts at index[3], 3-2 =1 length of delimiter ==1
-//    Add("//;\n       1;2") > Returns 3
-
-// delimiter starts at index[2], \n starts at index[5], 5-2=3, length of delimiter ==3
-//incomingstring.substing(index[2],{lengthOfDelimiter})
-//    Add("//***\n     1***2***3") > Returns 6 
 
